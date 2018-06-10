@@ -5,7 +5,9 @@ const router = express.Router();
 
 router.post("/", (req, res) => {
     const { credentials } = req.body;
+    // get the user information
     User.findOne({ email: credentials.email }).then(user =>{
+        // If the user is present then authenticate the user
         if(user && user.isValidPassword(credentials.password)){
             res.json({ user: user.toAuthenticateJSON() });
         } else {
