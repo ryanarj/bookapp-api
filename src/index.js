@@ -5,6 +5,7 @@ import auth from './routes/auth';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import users from "./routes/users";
+import Promise from 'bluebird';
 
 // To use the .env variables
 dotenv.config();
@@ -13,6 +14,7 @@ const uri = process.env.MONGODB_URL;
 app.use(bodyParser.json());
 
 // Connection to the DB
+mongoose.Promise = Promise;
 mongoose.connect(uri).catch(err => {})
 
 app.use('/api/auth', auth);

@@ -9,10 +9,9 @@ const schema = new mongoose.Schema(
         type: String, 
         required: true, 
         lowercase: true, 
-        index: true, 
         unique: true
     },
-    passwordHash : { type: String, required: true },
+    passwordHash: { type: String, required: true },
     confirmed: {type: Boolean, default: false}
 }, 
     {timestamps: true }
@@ -49,4 +48,4 @@ schema.methods.toAuthenticateJSON = function toAuthenticateJSON(){
 
 schema.plugin(uniqueValidator, {message: 'Email is taken'});
 
-export default mongoose.model('User', schema);
+export default mongoose.model("User", schema);
