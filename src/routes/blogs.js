@@ -6,7 +6,8 @@ const router = express.Router();
 
 router.get('/search', (req, res) => {
     res.json({
-        blog: [
+        // Dummy Data
+        blogs: [
             {
                 id: 1,
                 title: 'React1',
