@@ -6,6 +6,8 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import users from "./routes/users";
 import Promise from 'bluebird';
+import blogs from './routes/blogs';
+
 
 // To use the .env variables
 dotenv.config();
@@ -19,6 +21,7 @@ mongoose.connect(uri).catch(err => {})
 
 app.use('/api/auth', auth);
 app.use('/api/users', users);
+app.use('/api/blogs', blogs);
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
